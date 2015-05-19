@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lKK-zi-rLN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lKK-zi-rLN">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -94,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="462"/>
+            <point key="canvasLocation" x="761" y="1123"/>
         </scene>
         <!--Creature View Controller-->
         <scene sceneID="AHw-0J-gId">
@@ -108,20 +108,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="deatil" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nI-MJ-cF8">
-                                <rect key="frame" x="172" y="246" width="260" height="73"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nI-MJ-cF8">
+                                <rect key="frame" x="279" y="290" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Hwr-zM-1sP"/>
+                                    <constraint firstAttribute="width" constant="200" id="UGp-EO-l8e"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjX-4t-r7o">
-                                <rect key="frame" x="48" y="110" width="349" height="52"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjX-4t-r7o">
+                                <rect key="frame" x="200" y="206" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="EYj-4u-LMH"/>
+                                    <constraint firstAttribute="height" constant="30" id="seN-Sj-bvF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KBo-hP-Ogs" userLabel="Detail Text Field">
+                                <rect key="frame" x="200" y="285" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Noj-f0-KVT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fAw-E6-caW" id="gf3-5S-X9P"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c8y-5h-2sD" userLabel="Name Text Field">
+                                <rect key="frame" x="200" y="205" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HKV-ZT-YX5"/>
+                                    <constraint firstAttribute="width" constant="200" id="SW8-dN-d77"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fAw-E6-caW" id="HtU-5o-aEh"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="KBo-hP-Ogs" secondAttribute="centerX" id="1qy-Kp-6ds"/>
+                            <constraint firstItem="2nI-MJ-cF8" firstAttribute="top" secondItem="BjX-4t-r7o" secondAttribute="bottom" constant="50" id="2EV-Gd-Ob0"/>
+                            <constraint firstAttribute="centerX" secondItem="BjX-4t-r7o" secondAttribute="centerX" id="4qW-HP-Psi"/>
+                            <constraint firstAttribute="centerY" secondItem="2nI-MJ-cF8" secondAttribute="centerY" id="5ay-Hb-p67"/>
+                            <constraint firstItem="KBo-hP-Ogs" firstAttribute="top" secondItem="c8y-5h-2sD" secondAttribute="bottom" constant="50" id="7ep-xj-2NA"/>
+                            <constraint firstAttribute="centerX" secondItem="c8y-5h-2sD" secondAttribute="centerX" id="DJ6-g0-iCm"/>
+                            <constraint firstAttribute="centerX" secondItem="2nI-MJ-cF8" secondAttribute="centerX" id="eZd-gX-F59"/>
+                            <constraint firstAttribute="centerY" secondItem="KBo-hP-Ogs" secondAttribute="centerY" id="lM4-io-p5o"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Cff-L7-cM6" appends="YES" id="MJV-qX-pJV"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="op3-sw-bzp">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="1mA-r4-3Q1">
@@ -132,11 +177,19 @@
                     </navigationItem>
                     <connections>
                         <outlet property="detailLabel" destination="2nI-MJ-cF8" id="scQ-od-K5G"/>
+                        <outlet property="detailTextField" destination="KBo-hP-Ogs" id="BMK-Gr-CYr"/>
                         <outlet property="editBarButton" destination="1mA-r4-3Q1" id="Btq-Pk-UBR"/>
                         <outlet property="nameLabel" destination="BjX-4t-r7o" id="txF-C3-hnG"/>
+                        <outlet property="nameTextField" destination="c8y-5h-2sD" id="rpa-74-oSU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NbK-uU-p9G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Cff-L7-cM6">
+                    <connections>
+                        <action selector="tapDidOccur:" destination="fAw-E6-caW" id="Wpp-YA-Y1M"/>
+                        <outlet property="delegate" destination="fAw-E6-caW" id="FUf-tq-5vh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1673" y="462"/>
         </scene>
