@@ -9,13 +9,14 @@
 #import "CreatureViewController.h"
 #import "MagicalCreature.h"
 
-@interface CreatureViewController () <UIGestureRecognizerDelegate, UITextFieldDelegate>
+@interface CreatureViewController () <UIGestureRecognizerDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editBarButton;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *detailTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -25,8 +26,10 @@
     [super viewDidLoad];
     self.nameLabel.text = self.creature.name;
     self.detailLabel.text = self.creature.detail;
-
+    self.imageView.image = self.creature.image;
 }
+
+
 - (IBAction)editButton:(UIBarButtonItem *)sender {
     if (!self.editing) {
         self.editing = true;
@@ -43,37 +46,24 @@
         self.nameLabel.text = self.nameTextField.text;
         self.detailLabel.text = self.detailTextField.text;
 
+        self.creature.name = self.nameLabel.text;
+        self.creature.detail = self.detailLabel.text; 
+
         self.detailTextField.alpha = 0;
         self.nameTextField.alpha = 0;
     }
 }
 
-
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+        return self.creature.accessories.count;
 }
 
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccessoriesCellID"];
+    cell.textLabel.text = [self.creature.accessories objectAtIndex:indexPath.row];
 
-- (IBAction)tapDidOccur:(UITapGestureRecognizer *)sender {
-    //CGPoint point = [sender locationInView:self.view];
-
-//    if (CGRectContainsPoint(self.detailLabel.frame, point)) {
-//        self.detailTextField.alpha = 1;
-//        self.nameTextField.alpha = 1;
-//        self.nameTextField.text = self.nameLabel.text;
-//        self.detailTextField.text = self.detailLabel.text;
-//    }
-
-//    if (CGRectContainsPoint(self.nameLabel.frame, point)) {
-//        self.nameTextField.alpha = 1;
-//        self.detailTextField.alpha = 1;
-//        self.nameTextField.text = self.nameLabel.text;
-//        self.detailTextField.text = self.detailLabel.text;
-//    }
+    return cell;
 }
-
-
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self.nameTextField resignFirstResponder];
@@ -83,7 +73,13 @@
 }
 
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //None of this gets called because of error: -[CreatureViewController tapDidOccur:]: unrecognized selector sent to instance 0x7fa788f6b710
 
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    NSLog(@"THIS IS BEING CALLED");
+}
 
 
 @end

@@ -23,15 +23,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    MagicalCreature *unicorn = [[MagicalCreature alloc] initWithName:@"Unicorn" withDetail:@"a horse with a horn on its head"];
-    MagicalCreature *fairy = [[MagicalCreature alloc] initWithName:@"Fairy" withDetail:@"a flying tiny person"];
-    MagicalCreature *minotour = [[MagicalCreature alloc] initWithName:@"Minotour" withDetail:@"a half man half horse"];
+    MagicalCreature *unicorn = [[MagicalCreature alloc] initWithName:@"Unicorn" withDetail:@"a horse with a horn on its head" withImage:[UIImage imageNamed:@"Unicorn"]];
+    MagicalCreature *fairy = [[MagicalCreature alloc] initWithName:@"Fairy" withDetail:@"a flying tiny person" withImage:[UIImage imageNamed:@"Fairy"]];
+    MagicalCreature *minotaur = [[MagicalCreature alloc] initWithName:@"Minotaur" withDetail:@"a half man half horse" withImage:[UIImage imageNamed:@"Minotaur"]];
 
-    self.creatures = [NSMutableArray arrayWithObjects:unicorn, fairy, minotour, nil];
+    self.creatures = [NSMutableArray arrayWithObjects:unicorn, fairy, minotaur, nil];
 
 }
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self.tableView reloadData];
+}
+
 - (IBAction)addButtonPressed:(id)sender {
-    [self.creatures addObject:self.textView.text];
+    MagicalCreature *newCreature = [[MagicalCreature alloc]initWithName:self.textView.text withDetail:nil withImage:nil];
+    [self.creatures addObject:newCreature];
     self.textView.text = @"";
     [self.tableView reloadData];
     [self.textView resignFirstResponder];
